@@ -1,12 +1,7 @@
 import pygame as pg
 import sys
+import numpy as np
 from math import cos, sin 
-
-def get_coord(t):
-    around = 6
-    radius = 62.5
-    return (round(cos(t) * radius, around), round(sin(t) * radius, around))
-
 
 HEIGHT = 250
 WIDTH = 250
@@ -25,8 +20,19 @@ step = 0.03
 delta = 0.001
 shift = 125
 
+to_local_begin_coord = np.array([[1, 0, 0],
+                                                [0, 1, 0],
+                                                [shift, shift, 1]])
 
-while True:
+d = np.array([[1, 0, 0],
+                    [0, 1, 0],
+                    [50, 50, 1]])
+
+coord = np.array([0, 0, 1])
+
+STATUS = True
+
+while STATUS:
     for i in pg.event.get():
         if i.type == pg.QUIT:
             pg.quit()
@@ -42,10 +48,13 @@ while True:
 
     sc.fill(BLACK)
 
-    coord = get_coord(t)
+    rotation = np.array([[cos(t), sin(t), 0], [-sin(t), cos(t), 0], [0, 0, 1]])
+    
+    c = coord.dot(d).dot(rotation).dot(to_local_begin_coord)
+    
     t += step
         
-    pg.draw.circle(sc, RED, (coord[0] + shift, coord[1] + shift), 10)
+    pg.draw.circle(sc, RED, (c[0], c[1]), 10)
         
     pg.display.update()
     
