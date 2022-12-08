@@ -86,7 +86,7 @@ class FastClip:
 
         s_x = self.__x1
         s_y = self.__y1
-        for i in range(len(res)): # going to main coordinate 
+        for i in range(len(res)): # going to main coordinate
             res[i][0] -= s_x
             res[i][1] -= s_y
 
