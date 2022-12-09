@@ -19,24 +19,24 @@ class Filling:
         pix_arr = pg.PixelArray(sf)
         suspicious_point = []
 
-        if Filling.__int_to_rgb(pix_arr[x][y]) == BLACK or Filling.__int_to_rgb(pix_arr[x][y]) == RED:
+        if (y < 0 or y >= SIZE_WIN[1]) or (Filling.__int_to_rgb(pix_arr[x][y]) == BLACK or Filling.__int_to_rgb(pix_arr[x][y]) == RED):
             return
 
         j = x
-        while pix_arr[j][y] != Filling.__rgb_to_int(BLACK):
+        while j < SIZE_WIN[0] and pix_arr[j][y] != Filling.__rgb_to_int(BLACK):
             pix_arr[j][y] = Filling.__rgb_to_int(RED)
-            if pix_arr[j][y + 1] != Filling.__rgb_to_int(RED) or pix_arr[j][y + 1] != Filling.__rgb_to_int(BLACK):
+            if y + 1 < SIZE_WIN[1] and (pix_arr[j][y + 1] != Filling.__rgb_to_int(RED) or pix_arr[j][y + 1] != Filling.__rgb_to_int(BLACK)):
                 suspicious_point.append((j, y + 1))
-            if pix_arr[j][y - 1] != Filling.__rgb_to_int(RED) or pix_arr[j][y - 1] != Filling.__rgb_to_int(BLACK):
+            if y - 1 >= 0 and (pix_arr[j][y - 1] != Filling.__rgb_to_int(RED) or pix_arr[j][y - 1] != Filling.__rgb_to_int(BLACK)):
                 suspicious_point.append((j, y - 1))
             j += 1
 
         j = x - 1
-        while pix_arr[j][y] != Filling.__rgb_to_int(BLACK):
+        while j >= 0 and pix_arr[j][y] != Filling.__rgb_to_int(BLACK):
             pix_arr[j][y] = Filling.__rgb_to_int(RED)
-            if pix_arr[j][y + 1] != Filling.__rgb_to_int(RED) or pix_arr[j][y + 1] != Filling.__rgb_to_int(BLACK):
+            if y + 1 < SIZE_WIN[1] and (pix_arr[j][y + 1] != Filling.__rgb_to_int(RED) or pix_arr[j][y + 1] != Filling.__rgb_to_int(BLACK)):
                 suspicious_point.append((j, y + 1))
-            if pix_arr[j][y - 1] != Filling.__rgb_to_int(RED) or pix_arr[j][y - 1] != Filling.__rgb_to_int(BLACK):
+            if y - 1 >= 0 and (pix_arr[j][y - 1] != Filling.__rgb_to_int(RED) or pix_arr[j][y - 1] != Filling.__rgb_to_int(BLACK)):
                 suspicious_point.append((j, y - 1))
             j -= 1
 

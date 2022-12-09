@@ -5,4 +5,4 @@ RED = (255, 0, 0)
 
 BACKGROUND = (125, 125, 125)
 
-SIZE_WIN = (980, 800)
+SIZE_WIN = (800, 600)
