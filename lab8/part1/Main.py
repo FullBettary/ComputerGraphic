@@ -2,7 +2,7 @@ import sys
 import pygame as pg
 from part1 import InputMenu
 import Moduls
-from part1.Consts import *
+from Consts import *
 import ZBuffer as zb
 
 points = InputMenu.InputMenu()

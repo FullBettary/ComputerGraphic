@@ -1,6 +1,6 @@
 import pygame as pg
-from part1.Moduls import rgb_to_int
-from part1.Consts import *
+from Moduls import rgb_to_int
+from Consts import *
 
 
 def show(sf, figures, euq):
