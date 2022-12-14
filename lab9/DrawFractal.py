@@ -2,16 +2,16 @@ import pygame as pg
 from SIF import *
 from random import uniform, random
 from HelperFunctions import *
-from Consts import LIST_OF_RED_COLOR as list_color, GREEN
+from Consts import SIZE, GREEN
 
 
 def draw(sf):
 
     pix_arr = pg.PixelArray(sf)
-    iter = 2 * 10**5
-    mx = -500
-    my = -100
-    rad = 60
+    iter = 3 * 10**5
+    mx = 500
+    my = -30
+    rad = 70
     x, y = 0, 0
 
     for i in range(iter):
@@ -28,7 +28,6 @@ def draw(sf):
 
         xi = int(mx + round(rad * x))
         yi = int(my - round(rad * y))
-
 
         pix_arr[xi][yi] = rgb_to_int(GREEN)  # list_color[int(uniform(0, len(list_color) - 1))]
 
